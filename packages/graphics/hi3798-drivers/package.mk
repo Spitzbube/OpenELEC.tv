@@ -36,6 +36,9 @@ pre_build_target() {
   mkdir -p $PKG_BUILD
   cp $PKG_DIR/base.mak $PKG_BUILD/.
   cp $PKG_DIR/cfg.mak $PKG_BUILD/.
+  
+  mkdir -p $INSTALL/usr/lib
+  cp $PKG_DIR/ha_codec/libHA.AUDIO*.so $INSTALL/usr/lib
 } 
 
 make_target() {
