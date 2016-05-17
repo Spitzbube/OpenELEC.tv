@@ -1,7 +1,7 @@
 diff -Naur kodi-15.2-02e7013/xbmc/windowing/egl/EGLNativeTypeHisilicon.cpp kodi.work/xbmc/windowing/egl/EGLNativeTypeHisilicon.cpp
 --- kodi-15.2-02e7013/xbmc/windowing/egl/EGLNativeTypeHisilicon.cpp	1970-01-01 01:00:00.000000000 +0100
 +++ kodi.work/xbmc/windowing/egl/EGLNativeTypeHisilicon.cpp	2016-04-24 19:34:41.485303905 +0200
-@@ -0,0 +1,772 @@
+@@ -0,0 +1,783 @@
 +
 +#include "EGLNativeTypeHisilicon.h"
 +#include <EGL/egl.h>
@@ -127,7 +127,7 @@ diff -Naur kodi-15.2-02e7013/xbmc/windowing/egl/EGLNativeTypeHisilicon.cpp kodi.
 +	  ||(HI_UNF_ENC_FMT_720P_60 == enFormat)
 +	  ||(HI_UNF_ENC_FMT_480P_60 == enFormat)
 +	  ||(HI_UNF_ENC_FMT_NTSC == enFormat)
-+#if 0
++#if 1
 +	  ||(HI_UNF_ENC_FMT_3840X2160_30 == enFormat)
 +	  ||(HI_UNF_ENC_FMT_3840X2160_24 == enFormat)
 +#endif
@@ -543,13 +543,24 @@ diff -Naur kodi-15.2-02e7013/xbmc/windowing/egl/EGLNativeTypeHisilicon.cpp kodi.
 +    		}
 +    	}
 +    }
++	else
++	{
++		RESOLUTION_INFO res;
++		FormatToResolution(HI_UNF_ENC_FMT_1080P_60, &res);
++		resolutions.push_back(res);
++		FormatToResolution(HI_UNF_ENC_FMT_720P_60, &res);
++		resolutions.push_back(res);
++               FormatToResolution(HI_UNF_ENC_FMT_3840X2160_30, &res);
++               resolutions.push_back(res);
++
++	}
 +
 +	return resolutions.size() > 0;
 +}
 +
 +HI_UNF_ENC_FMT_E CEGLNativeTypeHisilicon::HIADP_HDMI::GetNativeFormat()
 +{
-+	HI_UNF_ENC_FMT_E fmt = HI_UNF_ENC_FMT_720P_50; //Fallback for No Sink
++	HI_UNF_ENC_FMT_E fmt = HI_UNF_ENC_FMT_1080P_60; //Fallback for No Sink
 +    HI_UNF_EDID_BASE_INFO_S stSinkCap;
 +
 +    if (HI_SUCCESS == HI_UNF_HDMI_GetSinkCapability(m_enHDMIId, &stSinkCap))
