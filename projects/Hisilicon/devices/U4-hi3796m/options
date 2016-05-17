@@ -1,0 +1,128 @@
+
+# The TARGET_CPU variable controls which processor should be targeted for
+# generated code.
+TARGET_CPU="cortex-a9"
+
+# TARGET_FLOAT:
+# Specifies which floating-point ABI to use. Permissible values are:
+# soft softfp hard
+#TARGET_FLOAT="hard"
+TARGET_FLOAT="softfp"
+
+# TARGET_FPU:
+# This specifies what floating point hardware (or hardware emulation) is
+# available on the target. Permissible names are:
+# fpa fpe2 fpe3 maverick vfp vfpv3 vfpv3-fp16 vfpv3-d16 vfpv3-d16-fp16
+# vfpv3xd vfpv3xd-fp16 neon neon-fp16 vfpv4 vfpv4-d16 fpv4-sp-d16
+# neon-vfpv4.
+#TARGET_FPU="neon"
+TARGET_FPU="vfpv3-d16"
+  
+# Kernel to use. values can be:
+# default:  default mainline kernel
+LINUX="hisilicon"
+  
+  
+# Build optimizations (size/normal)
+  OPTIMIZATIONS="size"
+  
+# Bootloader to use (syslinux / u-boot / bcm2835-bootloader)
+  BOOTLOADER="u-boot"
+
+# u-boot version to use (default)
+#  UBOOT_VERSION="imx6-cuboxi" 
+
+# Configuration for u-boot
+#  UBOOT_CONFIG="mx6_cubox-i_config"
+#  UBOOT_CONFIG="$UBOOT_CONFIG matrix"
+#  UBOOT_CONFIG="$UBOOT_CONFIG udoo_config"
+
+# Target Configfile for u-boot
+#  UBOOT_CONFIGFILE=""
+   
+# Kernel target for u-boot (default 'uImage' if BOOTLOADER=u-boot) (uImage / zImage)
+  KERNEL_UBOOT_TARGET="uImage"
+
+
+  # build and install ALSA Audio support (yes / no)
+    ALSA_SUPPORT="yes"
+
+  # OpenGL(X) implementation to use (no / mesa)
+    OPENGL="no"
+
+  # OpenGL-ES implementation to use (no / bcm2835-driver / gpu-viv-bin-mx6q / opengl-mali)
+    OPENGLES="hi3796m-drivers"
+
+  # include uvesafb support (yes / no)
+#    UVESAFB_SUPPORT="no"
+
+  # Displayserver to use (x11 / no)
+    DISPLAYSERVER="no"
+
+  # Windowmanager to use (ratpoison / fluxbox / none)
+#    WINDOWMANAGER="none"
+
+  # Xorg Graphic drivers to use (all / i915,i965,r200,r300,r600,nvidia)
+  # Space separated list is supported,
+  # e.g. GRAPHIC_DRIVERS="i915 i965 r300 r600 radeonsi nvidia"
+    GRAPHIC_DRIVERS=""
+
+  # KODI Player implementation to use (default / bcm2835-driver / libfslvpuwrap / libamcodec)
+    KODIPLAYER_DRIVER="hisi3796m-samples"
+
+  # KODI DCADEC support (yes / no)
+#    DCADEC_SUPPORT="yes"
+
+  # Modules to install in initramfs for early boot
+#    INITRAMFS_MODULES=""
+
+  # additional drivers to install:
+  # for a list of additinoal drivers see packages/linux-drivers
+  # Space separated list is supported,
+  # e.g. ADDITIONAL_DRIVERS="DRIVER1 DRIVER2"
+#    ADDITIONAL_DRIVERS="x5hd2-drivers"
+    ADDITIONAL_DRIVERS=""
+
+  # additional Firmware to use (dvb-firmware, misc-firmware, wlan-firmware)
+  # Space separated list is supported,
+  # e.g. FIRMWARE="dvb-firmware misc-firmware wlan-firmware"
+#    FIRMWARE=""
+
+  # build and install ATV IR remote support (yes / no)
+    ATVCLIENT_SUPPORT="no"
+
+  # build and install IRServer IR/LCD support (yes / no)
+    IRSERVER_SUPPORT="no"
+
+# LCD driver to Use - Possible drivers are ( Comma seperated:
+# bayrad,CFontz,CFontz633,CFontzPacket,curses,CwLnx,dm140,
+# ea65,EyeboxOne,g15,glcdlib,glk,hd44780,i2500vfd,
+# icp_a106,imon,imonlcd,IOWarrior,irman,irtrans,
+# joy,lb216,lcdm001,lcterm,lirc,lis,MD8800,mdm166a,
+# ms6931,mtc_s16209x,MtxOrb,mx5000,NoritakeVFD,
+# picolcd,pyramid,sed1330,sed1520,serialPOS,
+# serialVFD,shuttleVFD,sli,stv5730,SureElec,svga,vlsys_m428
+# 'all' compiles all drivers;
+# 'all,!xxx,!yyy' de-selects previously selected drivers
+# "none" for disable LCD support
+  LCD_DRIVER="none"
+
+  # build with swap support (yes / no)
+#    SWAP_SUPPORT="no"
+
+  # swap support enabled per default (yes / no)
+#    SWAP_ENABLED_DEFAULT="no"
+
+  # swapfile size if SWAP_SUPPORT=yes in MB
+#    SWAPFILESIZE="128"
+
+  # build with installer (yes / no)
+    INSTALLER_SUPPORT="no"
+ 
+# build and install hfs filesystem utilities (yes / no)
+  HFSTOOLS="no"  
+
+  
+  
+  
+  

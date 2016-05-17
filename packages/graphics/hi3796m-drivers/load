@@ -1,0 +1,86 @@
+insmod hi_media.ko
+insmod hi_mmz.ko
+insmod hi_common.ko
+insmod hi_gpio.ko
+insmod hi_gpio_i2c.ko i2cmode=2
+insmod hi_i2c.ko
+insmod mali.ko
+insmod hi_tde.ko
+insmod hi_otp.ko
+insmod hi_demux.ko
+insmod hi_adec.ko
+insmod hi_vfmw.ko
+insmod hi_svdec.ko
+insmod hi_pdm.ko
+insmod hi_pq.ko
+insmod hi_vpss.ko
+insmod hi_vdec.ko
+insmod hi_vpu.ko
+insmod hi_cipher.ko
+insmod hi_hdmi.ko
+insmod hi_adsp.ko
+insmod hi_aiao.ko
+insmod hi_vou.ko
+insmod hi_sync.ko
+insmod hi_pvr.ko
+insmod hi_avplay.ko
+insmod hi_mce.ko
+insmod hi_tuner.ko
+insmod hi_pwm.ko
+# About hi_fb:
+#  For 1920*1080, triple buffer, ARGB8888 format, use:
+#  insmod hi_fb.ko video="hi_fb:vram0_size:16200, vram4_size:2430"
+#  For 1280*720, use:
+#  insmod hi_fb.ko video="hi_fb:vram0_size:7200, vram2_size:2430"
+#  Insmod hi_fb.ko with no args will use defaule value,The defaule value is set by cfg.mak.
+#  vram0 is memory size for HD and vram4 is for SD0. The size is calculated as below:
+#  vram0_size = (1920*1080*4*2/1024)KB; vram4_size = (720*576*2*2/1024)KB
+insmod hi_fb.ko
+insmod hi_ir.ko
+insmod hi_wdg.ko
+insmod hi_jpeg.ko
+insmod hi_jpge.ko
+insmod hi_png.ko
+insmod hi_venc.ko
+insmod hi_aenc.ko
+insmod hi_keyled.ko
+insmod hi_sci.ko
+insmod hi_vi.ko
+insmod hi_hdmirx.ko
+insmod hi_pmoc.ko
+insmod ./usb/ehci-hcd.ko
+insmod ./usb/ohci-hcd.ko
+insmod ./usb/xhci-hcd.ko
+insmod ufsd.ko
+
+if [ `lsusb | grep RTL8192DU | wc -l | awk '{print $1;}'` -eq 1 ]; then
+insmod rtl8192du/cfg80211.ko
+insmod rtl8192du/rtl8192du.ko
+fi
+
+if [ `lsusb | grep RTL8192EU | wc -l | awk '{print $1;}'` -eq 1 ]; then
+insmod rtl8192eu/cfg80211.ko
+insmod rtl8192eu/rtl8192eu.ko
+fi
+
+if [ `lsusb | grep RTL8188CU | wc -l | awk '{print $1;}'` -eq 1 ]; then
+insmod rtl8188cu/cfg80211.ko
+insmod rtl8188cu/rtl8188cu.ko
+fi
+
+if [ `lsusb | grep RTL8188EU | wc -l | awk '{print $1;}'` -eq 1 ]; then
+insmod rtl8188eu/cfg80211.ko
+insmod rtl8188eu/rtl8188eu.ko
+fi
+
+if [ `lsusb | grep MT7601 | wc -l | awk '{print $1;}'` -eq 1 ]; then
+insmod cfg80211.ko
+insmod mt7601Usta.ko
+fi
+
+
+echo 6 > /proc/sys/vm/dirty_ratio
+echo 1 > /proc/sys/vm/overcommit_memory
+echo 8192 > /proc/sys/vm/min_free_kbytes
+echo interactive > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+echo 1200000 >/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq

@@ -210,6 +210,8 @@ if [ ! "$KODIPLAYER_DRIVER" = default ]; then
     KODI_CODEC="--enable-codec=hisilicon"
   elif [ "$KODIPLAYER_DRIVER" = hi3716cv200-samples ]; then
     KODI_CODEC="--enable-codec=hisilicon"
+  elif [ "$KODIPLAYER_DRIVER" = hisi3796m-samples ]; then
+    KODI_CODEC="--enable-codec=hisilicon --disable-openmax"
   else
     KODI_OPENMAX="--disable-openmax"
   fi
